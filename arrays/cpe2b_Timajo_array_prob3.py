@@ -3,7 +3,7 @@
 import array as arr
 
 splitNums = arr.array('i', [])
-hasOutOfRange=False
+hasOutOfRange=False #assumes that the inputs are within 30-40
 
 numbers = input('Please input numbers between 30-40 separated by space: ')
 numbers = numbers.split() #splitting the input numbers
