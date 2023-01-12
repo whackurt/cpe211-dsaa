@@ -1,9 +1,11 @@
 class Node:
-    def __init__(self, el, next=None):        
-        self.el = el
-        self.next = next
+    def __init__(self, el, p, n):
+        self.info = el
+        self.prev = p 
+        self.next = n
+    
 
-class SinglyLinkedList:
+class DoublyLinkedList:
     def __init__(self):  
         pass
     
@@ -17,62 +19,53 @@ class SinglyLinkedList:
     
     def toString(self):
         if(self.head is None):
-            print("Linkedlist is empty.")
-            return         
+            raise Exception("Linkedlist is empty.")   
         
         p = self.head
         s = ''
         while p:
-            s += str(p.el) + " "
+            s += str(p.info) + " "
             p = p.next
             
         return s
     
-    def find(self, el):
-        p = self.head
-        
-        while p != None and p.el != el:
-            p = p.next
-            
-        return p
-    
     def addToHead(self, el):
-        node = Node(el, self.head)
-        self.head = node
-        
-        if self.tail == None:
+        if self.head == None:
+            self.head = Node(el, None, None)
             self.tail = self.head
-
+        
+        else:
+            self.head = Node(el, None, self.head)
+            self.head.next.prev = self.head
+    
     def deleteFromHead(self):
         if self.isEmpty(): 
             raise Exception('LinkedList is empty.')
         
         p = self.head
-        el = p.el
+        el = p.info
         
         if self.head == self.tail:
             self.head = self.tail = None
         else:
-            self.head = self.head.next
+            self.head = p.next
+            self.head.next = p.next.next
+            self.head.prev = None
+            
             
         return el
     
     def deleteFromTail(self):
-        if self.isEmpty(): 
-            raise Exception('LinkedList is empty.')
-        
-        t = self.tail
-        el = t.el
+        if self.isEmpty():
+            raise Exception("Linkedlist is empty.")
+
+        d = self.tail
+        el = d.info
         
         if self.head == self.tail:
             self.head = self.tail = None
-            
         else:
-            p = self.head
-            while p.next != t:
-                p = p.next
-            
-            self.tail = p
+            self.tail = self.tail.prev
             self.tail.next = None
             
         return el
@@ -81,16 +74,16 @@ class SinglyLinkedList:
         if self.isEmpty(): 
             raise Exception('LinkedList is empty.')
         
-        if elem == self.head.el:
+        if elem == self.head.info:
             return self.deleteFromHead()
         
-        if elem == self.tail.el:
+        if elem == self.tail.info:
             return self.deleteFromTail()
         
         pred = self.head
         t = self.head.next
         
-        while t!=None and t.el!=elem:
+        while t!=None and t.info!=elem:
             pred = pred.next
             t = t.next 
         
@@ -101,20 +94,20 @@ class SinglyLinkedList:
             
         return elem
         
-# slist = SinglyLinkedList()
-# slist.new()
-# print(slist.isEmpty())
-# slist.addToHead(7)
-# slist.addToHead(12)
-# slist.addToHead(43)
-# print(slist.toString())
-# print(slist.find(2))
-# print("del",slist.deleteFromHead())
-# print(slist.toString())
-# slist.addToHead(98)
-# slist.addToHead(116)
-# print(slist.toString())
-# print("deleted ",slist.deleteElement(21))
-# print(slist.toString())
+dlist = DoublyLinkedList()
+dlist.new()
+print(dlist.isEmpty())
+dlist.addToHead(43)
+dlist.addToHead(66)
+print(dlist.toString())
+dlist.deleteFromHead()
+print(dlist.toString())
+dlist.addToHead(102)
+dlist.addToHead(325)
+print(dlist.toString())
+print("delhead",dlist.deleteFromHead())
+dlist.deleteElement(102)
+print(dlist.toString())
+
 
 

@@ -1,6 +1,6 @@
 class Node:
     def __init__(self, el, next=None):        
-        self.el = el
+        self.info = el
         self.next = next
 
 class SinglyLinkedList:
@@ -17,13 +17,12 @@ class SinglyLinkedList:
     
     def toString(self):
         if(self.head is None):
-            print("Linkedlist is empty.")
-            return         
+            raise Exception("Linkedlist is empty.")  
         
         p = self.head
         s = ''
         while p:
-            s += str(p.el) + " "
+            s += str(p.info) + " "
             p = p.next
             
         return s
@@ -31,7 +30,7 @@ class SinglyLinkedList:
     def find(self, el):
         p = self.head
         
-        while p != None and p.el != el:
+        while p != None and p.info != el:
             p = p.next
             
         return p
@@ -48,7 +47,7 @@ class SinglyLinkedList:
             raise Exception('LinkedList is empty.')
         
         p = self.head
-        el = p.el
+        el = p.info
         
         if self.head == self.tail:
             self.head = self.tail = None
@@ -62,7 +61,7 @@ class SinglyLinkedList:
             raise Exception('LinkedList is empty.')
         
         t = self.tail
-        el = t.el
+        el = t.info
         
         if self.head == self.tail:
             self.head = self.tail = None
@@ -81,16 +80,16 @@ class SinglyLinkedList:
         if self.isEmpty(): 
             raise Exception('LinkedList is empty.')
         
-        if elem == self.head.el:
+        if elem == self.head.info:
             return self.deleteFromHead()
         
-        if elem == self.tail.el:
+        if elem == self.tail.info:
             return self.deleteFromTail()
         
         pred = self.head
         t = self.head.next
         
-        while t!=None and t.el!=elem:
+        while t!=None and t.info!=elem:
             pred = pred.next
             t = t.next 
         
@@ -100,21 +99,20 @@ class SinglyLinkedList:
             pred.next = t.next
             
         return elem
-        
-# slist = SinglyLinkedList()
-# slist.new()
-# print(slist.isEmpty())
-# slist.addToHead(7)
-# slist.addToHead(12)
-# slist.addToHead(43)
-# print(slist.toString())
-# print(slist.find(2))
-# print("del",slist.deleteFromHead())
-# print(slist.toString())
-# slist.addToHead(98)
-# slist.addToHead(116)
-# print(slist.toString())
-# print("deleted ",slist.deleteElement(21))
-# print(slist.toString())
+    
 
-
+slist = SinglyLinkedList()
+slist.new()
+print(slist.isEmpty())
+slist.addToHead(7)
+slist.addToHead(12)
+slist.addToHead(43)
+print(slist.toString())
+print(slist.find(2))
+print("del",slist.deleteFromHead())
+print(slist.toString())
+slist.addToHead(98)
+slist.addToHead(116)
+print(slist.toString())
+print("deleted ",slist.deleteElement(7))
+print(slist.toString())
