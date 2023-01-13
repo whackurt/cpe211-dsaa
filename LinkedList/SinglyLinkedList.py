@@ -41,6 +41,15 @@ class SinglyLinkedList:
         
         if self.tail == None:
             self.tail = self.head
+    
+    def addToTail(self, el):
+        node = Node(el)
+        
+        if self.head is None:
+            self.head = self.tail = node 
+        else:
+            self.tail.next = node
+            self.tail = self.tail.next
 
     def deleteFromHead(self):
         if self.isEmpty(): 
@@ -107,12 +116,12 @@ print(slist.isEmpty())
 slist.addToHead(7)
 slist.addToHead(12)
 slist.addToHead(43)
+slist.addToTail(56)
+slist.addToTail(36)
 print(slist.toString())
-print(slist.find(2))
-print("del",slist.deleteFromHead())
+slist.deleteFromTail()
 print(slist.toString())
-slist.addToHead(98)
-slist.addToHead(116)
+slist.deleteFromTail()
 print(slist.toString())
-print("deleted ",slist.deleteElement(7))
-print(slist.toString())
+
+

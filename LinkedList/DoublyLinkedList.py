@@ -29,6 +29,14 @@ class DoublyLinkedList:
             
         return s
     
+    def find(self, el):
+        p = self.head
+        
+        while p != None and p.info != el:
+            p = p.next
+            
+        return p
+    
     def addToHead(self, el):
         if self.head == None:
             self.head = Node(el, None, None)
@@ -37,6 +45,17 @@ class DoublyLinkedList:
         else:
             self.head = Node(el, None, self.head)
             self.head.next.prev = self.head
+            
+    def addToTail(self, el):
+        p = self.tail 
+        node = Node(el, p, None)
+        
+        if self.tail  == None:
+            self.tail = self.head = node
+        else:
+             self.tail = node
+             p.next = self.tail
+             p.next.prev = p
     
     def deleteFromHead(self):
         if self.isEmpty(): 
@@ -99,14 +118,10 @@ dlist.new()
 print(dlist.isEmpty())
 dlist.addToHead(43)
 dlist.addToHead(66)
-print(dlist.toString())
+dlist.addToTail(99)
+dlist.addToTail(54)
 dlist.deleteFromHead()
-print(dlist.toString())
-dlist.addToHead(102)
-dlist.addToHead(325)
-print(dlist.toString())
-print("delhead",dlist.deleteFromHead())
-dlist.deleteElement(102)
+dlist.deleteFromTail()
 print(dlist.toString())
 
 
