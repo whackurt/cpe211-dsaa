@@ -1,71 +1,47 @@
-def make_reserve():  # no paramters are needed
-    # ask some questions to get people, place, etc.
-    # make the reservation data object, probably a list to start with...
-    new_reserve = ['Res.#', 'Name', 'Date', 'Time', 'No. of Adults', 'No. of Children', 'No. of Senior Citizen',
-                       'Total']
-    print()
-    new_reserve[0] = reserve_num
-    new_reserve[1] = input("Date: ")
-    new_reserve[2] = input("Time: ")
-    new_reserve[3] = input('Name: ')
-    new_reserve[4] = input('No. of Adults: ')
-    new_reserve[5] = input('No. of Children: \t')
-    new_reserve[6] = input('No. of Senior Citizen: \t')
-    new_reserve[7] = int(new_reserve[4]) + int(new_reserve[5]) + int(new_reserve[6])
+attempts=2
+ask ='yes'
+while(ask == 'yes' and attempts > 0):
+    score = 0
+    
+    print('\nAnswer the questions')
+    print("how many days in a year?")
+    print("a. 365 b.360 c.370 d.375")
+    answer1 = (input("Enter Answer: "))
+    if (answer1 == "a") or (answer1 == "A"):
+        score += 1
 
-    print()
-    return new_reserve
+    print("how many days in a week?")
+    print("a. 9 b.5 c.7 d.8")
+    answer2 = (input("Enter Answer: "))
+    if (answer2 == "c") or (answer2 == "C"):
+        score += 1
 
+    print("how many color og the rainbow?")
+    print("a. 5 b.7 c.8 d.10")
+    answer3 = (input("Enter Answer: "))
+    if (answer3 == "b") or (answer3 == "B"):
+        score +=1
 
+    print("Total_score:", score)
+    if (score == 3):
+        print("Good job Perfect Score")
 
-def view_reserve(reserve):
-    # make a loop to loop through the reserve, which is probably
-    # a list-of-lists to start with
-    for r in reserve:
-        print("Res.#   Date \t\tTime \t  Name \t\t# Adults\t# Children \t# Senior Citizen\t Total")
-        print(r)
-        anykey = input("Press Any Key to Continue")
-    # no return is needed for a "print" function, it will return "None" automatically
-
-
-# make your main loop and have a container to hold the reserve.  This should NOT
-# be in a function
-
-# set up the main loop...
-reserve_num = 0
-list_reserve = []  # to hold all of the reserve...
-
-while True:
-    reserve_num = reserve_num + 1
-    print()
-    print("Welcome to Yan Buffet Restaurant")
-    print()
-    print("System Menu")
-    print("\ta. View all Reservations")
-    print("\tb. Make Reservations")
-    print("\tc. Delete Reservation")
-    print("\td. Generate Report")
-    print("\te. Exit")
-    print()
-    # ask your questions about what to do, call the functions as needed...
-    # something like...
-
-    # ask the question, catch the result in a variable called "response"...
-    # set up your if-else based on response...
-    select = input("Enter Selection: ")
-
-    if select == 'A' or select == 'a':
-        view_reserve(list_reserve)
-
-    elif select == 'B' or select == 'b':
-        new_res = make_reserve()
-        list_reserve.append(new_res)
-    elif select == 'C' or select == 'c':
-        view_reserve(list_reserve)
-
-    elif select == 'D' or select == 'd':
-        print("Rate of the Following: ")
-        print("Adult - P500.00 \nChildren - P250.00\n Senior Citizen")
-
+    if (score ==2):
+        print("you've pass the test")
+            
+    if (score==1):
+        print("your score is low")
+    
+    attempts-=1    
+    
+    if(attempts > 0):
+        print('Attempt remaining:', attempts)
     else:
-        break  # stop the loop
+        print('End of the quiz. No more attempts left')
+        break
+        
+    ask = input("do you want to try again? (yes or no):")
+    if(ask == 'no'):
+        print('Thanks for taking the quiz.')
+        break
+    

@@ -21,8 +21,13 @@ for x in range(0,n):
     nums.append(num)
 
 #pass n to sum_numbers summing up of list items
-print('\nSum: {}'.format(sum_numbers(n)))
+print('\nSum using recursion: {}'.format(sum_numbers(n)))
 
+sumNums = 0
+for element in nums:
+    sumNums += element
+
+print('sumNums = ',sumNums)
 
     
 

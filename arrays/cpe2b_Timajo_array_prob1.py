@@ -1,7 +1,6 @@
 #Timajo, Kurt Vincent
 #CpE-2B
-import array as arr 
-
+import array as arr
 
 def printArr(text,arr,rev=False):
     """Prints an array of integers
@@ -14,7 +13,7 @@ def printArr(text,arr,rev=False):
     print(text, end=" ")
     if(not rev): #default order of the array elements
         for e in arr:
-            print(e, end=" ")
+            print(e, end=" ") 
     elif(rev==True): #reverses the order of elements in the array
         for i in range(len(arr)-1,-1,-1):
             print(arr[i], end=" ")
@@ -22,8 +21,8 @@ def printArr(text,arr,rev=False):
 
 nums = arr.array('i',[])
 print('Input 10 numbers separated by space')
-inputNums = input()
-splitNums = inputNums.split()
+inputNums = input() # 1 2 3 6 5 4 8 7 9 10
+splitNums = inputNums.split() # [1,2,3,6,5,4...]
 spLen = len(splitNums)
 
 if(spLen<10): #handling less than 10 elements

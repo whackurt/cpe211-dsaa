@@ -19,7 +19,7 @@ def printArr(text="Array"):
         for elem in numArr:
             print(elem, end=" ")
         print(']')        
-    
+
 def removeDuplicate(refArr): 
     """Removes duplicate elements in an array
 
@@ -29,11 +29,12 @@ def removeDuplicate(refArr):
     Returns:
         updated (array.array): the array with no duplicate elements
     """
-    updated = arr.array('i',[])
+    noDups = arr.array('i',[]) # 1 4 5 6 7 
     for i in refArr:
-        if(i not in updated):
-            updated.append(i)
-    return updated    
+        if(i not in noDups):
+            noDups.append(i)
+        
+    return noDups    
     
 print('Prob 2: Array Operations')
 printArr()

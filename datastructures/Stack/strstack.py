@@ -1,9 +1,10 @@
 from collections import deque
-import array as arr
 
 class Stack:
     def __init__(self):
-        self.container = [] 
+        # self.container = arr.array('i', [])   
+        # self.container = [] 
+        self.container = deque()
         
     def push(self,item):        
         self.container.append(item)
@@ -29,26 +30,21 @@ class Stack:
     def size(self):
         return len(self.container)
     
-s = Stack()
+    def show(self):
+        print(self.container)
+        
+        
+def reverse_string(str):
+    stack = Stack()
+    stack = str.split()
+    
+    stack.show()                  
+        
+        
+    
+    return reversed
 
-print(s.is_empty())
-s.pop()
-s.push(12)
-print('after inserting 12, size=',s.size())
-
-s.push(304)
-print('after inserting 304, size=',s.size())
-
-print('peek:',s.peek())
-
-s.pop()
-
-print('after pop peek:',s.peek())
-print('after popping, size=',s.size())
-
-s.push(5184)
-
-print(s.peek())
-print('is empty? ',s.is_empty())
-
-print('is full? ',s.is_full())
+print(reverse_string("COVID-19"))
+    
+    
+    

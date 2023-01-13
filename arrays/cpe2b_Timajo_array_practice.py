@@ -1,5 +1,4 @@
 from array import *
-import math
 
 
 def printArray(arr):    
